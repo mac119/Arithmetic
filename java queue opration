@@ -1,0 +1,89 @@
+class Queue{
+	private int[] arr;
+	private int lens;
+	private int front;
+	private int end;
+	
+	
+	
+	public Queue(){
+		arr = new int[10];
+		lens = 0;
+		front = 0;
+		end = -1;
+	}
+	
+	public 	Queue(int maxSize){
+		arr = new int[maxSize];
+		lens = 0;
+		front = 0;
+		end = -1;
+	}
+	
+	public void insert(int value){
+		if(end == arr.length-1){
+			end = -1;
+		}
+		arr[++end] = value;
+		lens++;
+	}
+	
+	public int remove(){
+		int value = arr[front++];
+		
+		if(front == arr.length){
+			front = 0;
+		}
+		lens--;
+		return value;
+
+	}
+	
+	public void printQueue(){
+		for(int p:arr){
+			System.out.print(p+" ");
+		}
+		
+	}
+	
+	public int peek(){
+		return arr[front];
+	}
+	
+	public boolean isEmpty(){
+		return lens == 0;
+	}
+	
+	public boolean isFull(){
+		return lens == arr.length;
+	}
+	
+	public int size(){
+		return lens;
+	}
+	
+	
+}
+
+public class MyQueue{
+	public static void main(String ... args){
+		Queue q = new Queue(4);
+		q.insert(1);
+		q.insert(2);
+		q.insert(3);
+		q.insert(9);
+		q.insert(11);
+//		q.printQueue();	
+		System.out.println("\n=============\n");		
+		while(!q.isEmpty()){
+			System.out.print(q.remove()+" ");		
+		}
+		
+		System.out.println("\n============\n");
+		System.out.println(q.isEmpty());
+		System.out.println(q.isFull());
+		System.out.println(q.size());
+		
+		
+	}
+}
