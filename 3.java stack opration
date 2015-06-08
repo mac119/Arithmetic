@@ -1,0 +1,68 @@
+class MyStack{
+	private int[] arr;
+	private int top;
+	
+	
+	public MyStack(){
+		arr = new int[10];
+		top = -1;
+	}
+	
+	public MyStack(int maxSize){
+		arr = new int[maxSize];
+		top = -1;
+	}
+	
+	public void push(int value){
+		arr[++top] = value;
+	}
+	
+	public int pop(){
+		return arr[top--];
+	}
+	
+	public int peek(){
+		return arr[top];
+	}
+	
+	public boolean isEmpty(){
+		return top == -1;
+	}
+	
+	public boolean isFull(){
+		return top == arr.length-1;
+	}
+	
+	public void printStack(){
+		for(int p:arr){
+			System.out.print(p+" ");
+		}
+	}
+	
+	
+}
+
+public class Stack{
+	public static void main(String ... args){
+		MyStack ms = new MyStack(4);
+		
+		ms.push(23);
+		ms.push(43);
+		ms.push(10);
+		ms.push(8);
+		
+		
+		System.out.println(ms.isEmpty());
+		System.out.println(ms.isFull());
+		System.out.println(ms.peek());
+		System.out.println(ms.peek());
+
+		while(!ms.isEmpty()){
+			System.out.print(ms.pop()+" ,");
+		}
+		
+		System.out.println("\n"+ms.isEmpty());
+		System.out.println(ms.isFull());		
+		
+	}
+}
