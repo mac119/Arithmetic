@@ -1,0 +1,161 @@
+class Arr{
+	int len ;  //定义长度
+	int[]  arr = null;  
+	
+	public Arr(){
+		arr = new int[30];    //初始化数组
+		
+	}
+	
+//打印数组
+	public void print(){
+		for(int i=0 ; i<len;i++){
+			System.out.print(arr[i] + " ");
+			
+		}
+		
+	}
+//插入数组
+	public int[] insert(int value){
+		arr[len] = value;
+		len ++;		
+		return arr;
+		
+	}
+	
+//插入数组,并排序
+	public void  insert2(int value){
+		int i ;
+		for (i=0;i<len;i++){
+			if(arr[i] > value) break;
+		}
+		
+		for(int j=len;j>i;j--){
+			arr[j] = arr[j-1];
+			}
+			arr[i] = value;
+			len++;
+		
+	}
+//查找数组
+	public void search(int index){
+		if (index >=0 && index<len) System.out.println(arr[index]);
+	}
+//二分法查找数组
+	public int binarySearch(int value){
+		int middle = 0;
+		int low = 0;
+		int pow = len;
+		while(low <= pow){
+			middle = (pow + low) / 2;
+			if(value > arr[middle]){
+				low = middle+1;
+			}else if(value < arr[middle]){
+				pow = middle -1;
+			}else{
+				return middle;
+			}
+		}
+		return -1;
+	}
+
+//查找位置
+	public int location(int value){
+		int i ;
+		for(i = 0;i<len;i++){
+			if(arr[i] == value) break;
+		}
+		if(i == len) return -1;
+		else return i;
+	}
+	
+//通过值删除数组
+	public void deleteFromValue(int value){		
+			
+	
+		int i;
+		for(i =0;i<len;i++){
+			if(arr[i] == value){
+				break;
+			}else{
+				System.out.println("This value is not in array!!!");
+				System.exit(0);
+			}
+		}
+		
+		
+		for (int a=i;a<len;a++){
+			arr[a] = arr[a+1];
+		}
+		len --;		
+
+	}
+	
+//通过索引删除数组
+	public void deleteFromIndex(int index){
+		if(index < 0 || index >= len){
+			throw new ArrayIndexOutOfBoundsException();
+		}else{
+			for(int i = index ;i<len;i++){
+				arr[i] = arr[i+1];
+			}
+		}
+		len --;
+	}
+
+
+//更新数组
+	public void update(int index,int value){
+		if(index <0 || index >=len){
+			throw new ArrayIndexOutOfBoundsException();
+		}else{
+			arr[index] = value;
+		}
+	}
+	
+//排序数组，从大到小排序
+	public void sortBigToLittle(){
+		for(int i = 0; i<len-1;i++){
+			for(int j =0;j<len-i-1;j++){
+				if(arr[j]<arr[j+1]){
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;					
+				}
+			}				
+		}		
+	}
+	
+//排序数组,从小到大排序
+	public void sortLittleToBig(){
+		for(int i = 0; i<len-1;i++){
+			for(int j =0;j<len-i-1;j++){
+				if(arr[j]>arr[j+1]){
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;					
+				}
+			}				
+		}		
+	}	
+	
+}
+
+
+public class MyArr{
+	public static void main(String ... args){
+		Arr arr = new Arr();
+		
+		arr.insert2(6);
+		arr.insert2(1);
+
+		arr.print();
+		
+		int index = arr.binarySearch(1);
+		System.out.println("\n"+index);
+		
+		
+		
+	}
+	
+}
