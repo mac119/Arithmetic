@@ -1,0 +1,63 @@
+class Sorts{
+
+	
+	public static void main(String ... args){
+		int[] arr = {12,34,11,2,6,30};
+		InsertSort(arr);
+		
+		print(arr);
+	}
+//冒泡排序	
+	public static void BubbleSort(int[] arr){
+		int temp ;
+		
+		for (int i =0;i<arr.length-1;i++){
+			for(int j = arr.length-1;j>i;j--){
+				if(arr[j] < arr[j-1]){
+					temp = arr[j];
+					arr[j] = arr[j-1];
+					arr[j-1]=temp;
+				}
+			}
+			
+		}
+	}
+	
+//选择排序
+	public static void SelectSort(int[] arr){
+		int k ;
+		int temp;
+		for(int i=0;i<arr.length-1;i++){
+			k=i;
+			for(int j=i;j<arr.length;j++){
+				if(arr[j] < arr[k]){
+					k=j;
+				}
+			}
+			temp = arr[i];
+			arr[i] = arr[k];
+			arr[k] = temp;
+		}
+		
+	}
+	
+//插入排序
+	public static void InsertSort(int[] arr){
+		int temp ;
+		for(int i = 1;i<arr.length;i++){
+			temp=arr[i];
+			int j=i;
+			while(j>0 && arr[j] >= temp){
+				arr[j] = arr[j-1];
+				j--;
+			}
+			arr[j] = temp;
+		}
+		
+	}
+	public static void print(int[] arr){
+		for(int i =0;i<arr.length;i++){
+			System.out.print(arr[i]+" ");
+		}
+	}
+}
